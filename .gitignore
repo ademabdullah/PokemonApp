@@ -1,0 +1,19 @@
+Ignore Gradle and build directories
+
+# Ignore Gradle and build directories
+.gradle/
+build/
+app/build
+
+# ignoreAndroid Studio project files
+.idea/
+*.iml
+
+# Ignore built APKs and AABs
+*.apk
+*.aab
+
+# Also ignore these specific files
+gradle.properties
+gradlew
+local.properties
