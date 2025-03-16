@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "data"
+    namespace = "com.example.domain"
     compileSdk = 35
 
     defaultConfig {
@@ -25,8 +25,7 @@ android {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(project(":app:data"))
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")
 
@@ -36,6 +35,5 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     testImplementation("com.google.dagger:hilt-android-testing:2.50")
     kaptTest("com.google.dagger:hilt-android-compiler:2.50")
-
 }
 
