@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.domain"
-    compileSdk = 34
+    namespace = "domain"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
     }
 
     compileOptions {
@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation(libs.org.kotlinx)
     implementation(project(":data"))
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")

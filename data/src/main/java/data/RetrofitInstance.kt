@@ -14,6 +14,4 @@ object RetrofitInstance {
             .build()
             .create(PokemonApiService::class.java)
     }
-
-
 }
