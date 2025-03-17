@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application"
-include(":app")
-include(":app:data")
-include(":app:domain")
+rootProject.name = "PokemonApp"
+include(":feature")
+include(":data")
+include(":domain")
