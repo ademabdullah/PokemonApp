@@ -6,3 +6,9 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     id("com.google.dagger.hilt.android") version "2.50" apply false
 }
+
+tasks.register("RunAllTests") {
+    group = "verification"
+    description = "Run all tests"
+    dependsOn( ":domain:testDebugUnitTest", ":data:testDebugUnitTest")
+}
