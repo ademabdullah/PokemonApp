@@ -16,11 +16,5 @@ object NetworkModule {
     @Provides
     fun provideApiService(retrofitAdapter: Retrofit): PokemonApiService {
         return retrofitAdapter.create(PokemonApiService::class.java)
-//        return Retrofit
-//            .Builder()
-//            .baseUrl("https://pokeapi.co/api/v2/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(PokemonApiService::class.java)
     }
 }

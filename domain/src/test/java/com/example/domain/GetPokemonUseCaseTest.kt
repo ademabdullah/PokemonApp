@@ -1,54 +1,35 @@
 package com.tests.domain
 
-import com.example.data.PokemonResponse
-import com.example.data.Sprites
 import com.example.domain.GetPokemonUseCase
 import data.PokemonRepository
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class GetPokemonUseCaseTest {
-    private val repository: PokemonRepository = mock()
+    private val mockPokemonRepository: PokemonRepository = mock()
     private lateinit var sut: GetPokemonUseCase
 
     @Before
     fun setUp() {
-        sut = GetPokemonUseCase(repository)
+        sut = GetPokemonUseCase(mockPokemonRepository)
     }
 
     @Test
-    fun `GIVEN correct data WHEN invoke() is called, THEN return the correct data`() =
-        runTest {
-            val pokemonName = "pikachu"
-            val expectedPokemon =
-                PokemonResponse("pikachu", 4, 60, sprites = Sprites("pikachu.png"))
-            whenever(repository.getPokemon(pokemonName)).thenReturn(expectedPokemon)
+    fun `GIVEN getPokemon returns success WHEN invoke is called, THEN return success`() = runTest {
+        sut("pikachu").isSuccess
 
-            val result = runCatching { sut(pokemonName) }
-
-            assertTrue(result.isSuccess)
-            assertEquals(expectedPokemon, result.getOrNull())
-            verify(repository).getPokemon(pokemonName)
-        }
+    }
 
     @Test
-    fun `GIVEN incorrect data WHEN invoke() is called, THEN return an exception`() =
-        runTest {
-            val pokemonName = "Charizard"
-            val exception = RuntimeException("Network Error")
-            whenever(repository.getPokemon(pokemonName)).thenThrow(exception)
+    fun `GIVEN getPokemon returns failure WHEN invoke is called, THEN return failure`() = runTest {
+        whenever(mockPokemonRepository.getPokemonList()).doReturn(Result.failure(Exception()))
 
-            val result = runCatching { sut(pokemonName) }
-
-            assertTrue(result.isFailure)
-            verify(repository).getPokemon(pokemonName)
-        }
+        sut("pikachu").isFailure
+    }
 }

@@ -11,9 +11,27 @@ composeBom = "2024.04.01"
 appcompat = "1.6.1"
 material = "1.10.0"
 coRoutineVersion = "1.6.4"
+retrofitVersion = "2.9.0"
+gsonVersion = "2.9.0"
+retroFitAdapterVersion = "1.0.13"
+hilt = "2.50"
+mockito = "4.8.0"
+mockitoKotlin = "4.1.0"
+coroutinesTest =  "1.6.4"
 
 [libraries]
-org-kotlinx = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coRoutineVersion"}
+
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+retroFitAdapter = { group = "com.github.skydoves", name = "retrofit-adapters-result", version.ref = "retroFitAdapterVersion" }
+gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gsonVersion" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion"}
+kotlinx = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coRoutineVersion"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

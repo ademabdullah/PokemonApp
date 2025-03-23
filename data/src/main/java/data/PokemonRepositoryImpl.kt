@@ -1,6 +1,8 @@
 package com.example.data
 
 import data.PokemonRepository
+import data.model.PokemonList
+import data.model.PokemonResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -8,21 +10,12 @@ import javax.inject.Singleton
 class PokemonRepositoryImpl @Inject constructor(
         private val apiService: PokemonApiService,
     ) : PokemonRepository {
-        override suspend fun getPokemon(name: String): PokemonResponse {
-            try {
-                return apiService.getPokemon(name)
-            } catch (error: Throwable) {
-                println("Unexpected error while handling request:$error")
-                throw error
-            }
-        }
 
-        override suspend fun getListPokemon(): PokemonList {
-            try {
-                return apiService.getListPokemon() // API call
-            } catch (error: Throwable) {
-                println("Unexpected error while handling request:$error")
-                throw error
-            }
-        }
+    override suspend fun getPokemon(name: String): Result<PokemonResponse> {
+        return apiService.getPokemon(name)
     }
+
+    override suspend fun getPokemonList(): Result<PokemonList> {
+        return apiService.getListPokemon() // API call
+    }
+}

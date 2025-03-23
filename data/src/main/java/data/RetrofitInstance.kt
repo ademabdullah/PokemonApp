@@ -1,5 +1,6 @@
 package com.example.data
 
+import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,6 +11,7 @@ object RetrofitInstance {
         Retrofit
             .Builder()
             .baseUrl(BASE_URL)
+            .addCallAdapterFactory(ResultCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PokemonApiService::class.java)

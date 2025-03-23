@@ -1,5 +1,8 @@
 package com.example.data
 
+import data.model.Pokemon
+import data.model.PokemonList
+import data.model.PokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,10 +13,8 @@ interface PokemonApiService {
     }
 
     @GET(POKEMON_DETAILS)
-    suspend fun getPokemon(
-        @Path("name") name: String,
-    ): PokemonResponse
+    suspend fun getPokemon(@Path("name") name: String): Result<PokemonResponse>
 
     @GET(POKEMON_LIST)
-    suspend fun getListPokemon(): PokemonList
+    suspend fun getListPokemon(): Result<PokemonList>
 }

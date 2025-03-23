@@ -1,10 +1,10 @@
 package data
 
-import com.example.data.PokemonList
-import com.example.data.PokemonResponse
+import data.model.PokemonList
+import data.model.PokemonResponse
 
 interface PokemonRepository {
-    suspend fun getPokemon(name: String): PokemonResponse
+    suspend fun getPokemon(name: String): Result<PokemonResponse>
 
-    suspend fun getListPokemon(): PokemonList
+    suspend fun getPokemonList(): Result<PokemonList>
 }
