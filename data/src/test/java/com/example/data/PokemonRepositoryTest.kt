@@ -28,7 +28,7 @@ class PokemonRepositoryTest {
             // given
             val expectedPokemon = PokemonResponse("pikachu", 4, 60, sprites = Sprites("pikachu.png"))
 
-            whenever(mockApiService.getPokemon("pikachu")).thenReturn(expectedPokemon)
+//            whenever(mockApiService.getPokemon("pikachu")).thenReturn(expectedPokemon)
 
             // when
             val result = repository.getPokemon("pikachu")

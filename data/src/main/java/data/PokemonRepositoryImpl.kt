@@ -5,9 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PokemonRepositoryImpl
-    @Inject
-    constructor(
+class PokemonRepositoryImpl @Inject constructor(
         private val apiService: PokemonApiService,
     ) : PokemonRepository {
         override suspend fun getPokemon(name: String): PokemonResponse {
